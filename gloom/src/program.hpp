@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <string>
+#include <vector>
 
 
 // Main OpenGL program
@@ -53,6 +54,10 @@ inline void printGLError() {
                 errorID, errorString.c_str());
     }
 }
+
+// Student code
+unsigned int createTriangleVAO(std::vector<float> vertices, std::vector<int> indices);
+
 
 
 #endif
