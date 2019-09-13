@@ -56,7 +56,7 @@ inline void printGLError() {
 }
 
 // Student code
-unsigned int createTriangleVAO(std::vector<float> vertices, std::vector<int> indices);
+unsigned int generateTriangleVAO(std::vector<float> vertices, std::vector<int> indices);
 
 
 

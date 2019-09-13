@@ -14,12 +14,14 @@ void runProgram(GLFWwindow* window)
     glEnable(GL_CULL_FACE);
 
     // Set default colour after clearing the colour buffer
-    glClearColor(0.3f, 0.5f, 0.8f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Black
 
     // Set up your scene here (create Vertex Array Objects, etc.)
 	
 	Gloom::Shader shader;
 	shader.makeBasicShader("../../gloom/shaders/simple.vert", "../../gloom/shaders/simple.frag");
+
+/* // Task 1
 
 	std::vector<float> triangle_vertices{	-0.6, -0.6, 0,
 											0, -0.6, 0, 
@@ -41,8 +43,24 @@ void runProgram(GLFWwindow* window)
 										6,7,8,
 										9,10,11
 	};
+	*/
 
-	unsigned int triangleVAOID = createTriangleVAO(triangle_vertices, triangle_indices);
+	std::vector<float> triangle_vertices{
+										-0.9,-0.9,0,
+										0,0.9,0,
+										0.5,-0.9,0,
+										0.6,-0.9,0,
+										0.9,0.9,0,
+										0.1,0.9,0
+	};
+	
+	std::vector<int> triangle_indices{	2,1,0,
+										3,4,5
+	};
+
+
+
+	unsigned int triangleVAOID = generateTriangleVAO(triangle_vertices, triangle_indices);
 
 	shader.activate();
 
@@ -56,7 +74,7 @@ void runProgram(GLFWwindow* window)
 
 		glBindVertexArray(triangleVAOID);
 
-		glDrawElements(GL_TRIANGLES, 15, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         // Handle other events
         glfwPollEvents();
@@ -83,7 +101,7 @@ void handleKeyboardInput(GLFWwindow* window)
 
 
 //Set up a Vertex Array Object for drawing triangles
-unsigned int createTriangleVAO(std::vector<float> vertices, std::vector<int> indices)
+unsigned int generateTriangleVAO(std::vector<float> vertices, std::vector<int> indices)
 {
 	unsigned int array=0;
 	glGenVertexArrays(1, &array);
